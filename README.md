@@ -73,6 +73,7 @@
 ## 📌 Проекты
 
 <p align="center">
+  <a href="https://github.com/fiskarik/banda-bazis"><img src="profile/pin-banda-bazis.svg" alt="banda-bazis" /></a>
   <a href="https://github.com/fiskarik/sverk-drone"><img src="profile/pin-sverk-drone.svg" alt="sverk-drone" /></a>
   <a href="https://github.com/fiskarik/smart-choice"><img src="profile/pin-smart-choice.svg" alt="smart-choice" /></a>
   <a href="https://github.com/fiskarik/ChessCompetition"><img src="profile/pin-ChessCompetition.svg" alt="ChessCompetition" /></a>

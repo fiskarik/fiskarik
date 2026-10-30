@@ -56,6 +56,14 @@ jobs:
           path: profile/top-langs.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Карточка banda-bazis
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: pin
+          options: repo=banda-bazis&locale=ru&bg_color=102a22&title_color=95d5b2&text_color=d8f3dc&icon_color=52b788&hide_border=true&border_radius=10
+          path: profile/pin-banda-bazis.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Карточка sverk-drone
         uses: stats-organization/github-readme-stats-action@v2
         with:

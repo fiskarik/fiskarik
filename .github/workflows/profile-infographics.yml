@@ -1,4 +1,4 @@
-# Раз в день перерисовывает 3D-календарь и змейку для README профиля
+# Раз в день перерисовывает карточки статистики, 3D-календарь и змейку для README профиля
 name: profile-infographics
 
 on:
@@ -9,10 +9,14 @@ on:
     branches: [main]
     paths-ignore:
       - "profile-3d-contrib/**"
+      - "profile/**"
       - "assets/**"
 
 permissions:
   contents: write
+
+concurrency:
+  group: profile-infographics
 
 jobs:
   build:
@@ -34,6 +38,47 @@ jobs:
           outputs: |
             assets/snake-light.svg?color_snake=#2d6a4f&color_dots=#ebedf0,#b7e4c7,#74c69d,#40916c,#1b4332
             assets/snake-dark.svg?palette=github-dark&color_snake=#95d5b2&color_dots=#161b22,#1b4332,#2d6a4f,#40916c,#74c69d
+
+      # Публичный github-readme-stats.vercel.app отключён, поэтому карточки рисуем здесь
+      - name: Карточка статистики
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: stats
+          options: show_icons=true&locale=ru&bg_color=102a22&title_color=95d5b2&text_color=d8f3dc&icon_color=52b788&ring_color=74c69d&hide_border=true&border_radius=10
+          path: profile/stats.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Карточка языков
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: top-langs
+          options: layout=compact&langs_count=8&locale=ru&bg_color=102a22&title_color=95d5b2&text_color=d8f3dc&hide_border=true&border_radius=10
+          path: profile/top-langs.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Карточка sverk-drone
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: pin
+          options: repo=sverk-drone&locale=ru&bg_color=102a22&title_color=95d5b2&text_color=d8f3dc&icon_color=52b788&hide_border=true&border_radius=10
+          path: profile/pin-sverk-drone.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Карточка smart-choice
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: pin
+          options: repo=smart-choice&locale=ru&bg_color=102a22&title_color=95d5b2&text_color=d8f3dc&icon_color=52b788&hide_border=true&border_radius=10
+          path: profile/pin-smart-choice.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Карточка ChessCompetition
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: pin
+          options: repo=ChessCompetition&locale=ru&bg_color=102a22&title_color=95d5b2&text_color=d8f3dc&icon_color=52b788&hide_border=true&border_radius=10
+          path: profile/pin-ChessCompetition.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit & Push
         run: |
